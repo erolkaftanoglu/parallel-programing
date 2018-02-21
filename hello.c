@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <mpi.h>
 
+int power (int a, int b) {
+  if(a != 0 && b == 0) return 1;
+  else {
+    int j,multy = 1;
+    for(j = 0; j <= b; j++) {
+      multy *= a;
+    }
+    return multy;
+  } 
+}
+
 int main(void) {
 
   MPI_Init(NULL,NULL);
@@ -13,14 +24,10 @@ int main(void) {
 
   int dizi[10] = {1,2,3,4,5,6,78,9,9,0};
   int i, sum = 0;
-  switch(rank) {
-    case 0: puts("I am the master"); break;
-    case 1: for(i = 0; i<10; i++) sum+=dizi[i]; printf("sayilarin toplami %d\n", sum); break;
-    case 2: for(i = 0; i<10; i++) sum+=dizi[i]*dizi[i]; printf("sayilarin toplami %d\n", sum); break;
-    case 3: for(i = 0; i<10; i++) sum+=dizi[i]*dizi[i]*dizi[i]; printf("sayilarin toplami %d\n", sum); break;
-  }
+  for(i = 0; i < 10; i++) 
+    sum += power(dizi[i],rank);
 
-  printf("Process sayisi = %d \n", size);
+  printf("rank: %d, sayilarin: %d kuvetleri: %d  \n", rank, rank, sum);
 
   MPI_Finalize();
 
