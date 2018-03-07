@@ -5,7 +5,7 @@
 enum Players { Federer, Nadal };
 
 int main (void) {
-    int size, name, i, number = 0, TAG = 100;
+    int size,rank, name, i, number = 0, TAG = 100;
     MPI_Status status;
 
     MPI_Init(NULL, NULL);
