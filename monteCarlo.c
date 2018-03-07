@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "time.h"
 #define POINTNUMBER 1000
-#define TAG = 777
+#define TAG  777
+
 
 int main(void) {
     int size, rank, i, alt = 0, ust = 0;
@@ -33,7 +34,7 @@ int main(void) {
         MPI_Send(&alt, 1, MPI_INT, 0, TAG+rank, MPI_COMM_WORLD);
         MPI_Send(&ust, 1, MPI_INT, 0, TAG+rank, MPI_COMM_WORLD);
     }else {
-        int altDİzi[4], ustDizi[4;
+        int altDizi[4], ustDizi[4];
         altDizi[0] = alt;
         ustDizi[0] = ust;
 
@@ -54,7 +55,7 @@ int main(void) {
             ustToplam += ustDizi[i];
         }
         double pi = 0.0;
-        pi = double ((4.0 * altToplam) / ((double)altToplam + (double) ustToplam));
+        pi =(double) ((4.0 * altToplam) / ((double)altToplam + (double) ustToplam));
         printf("Yaklasik PI = %1.20f \n", pi);
     }
 

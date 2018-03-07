@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "mpi.h"
+#include <stdlib.h>
 
 int main(void) {
     int size, rank, i, x = 0, TAG= 100;
@@ -30,6 +30,6 @@ int main(void) {
         MPI_Send(&x, 1, MPI_INT, rank+1, TAG, MPI_COMM_WORLD );
     }
 
-    MPI_Finalize();
 
+    MPI_Finalize();
 }
